@@ -1,7 +1,6 @@
 import SlideHero from "./components/SlideHero";
-import ShowFiltredProducts from "./components/ShowFiltredProducts";
+import ShowFilteredProducts from "./components/ShowFilteredProducts";
 import ProductCategories from "./components/Category";
-import Footer from "./components/Footer";
 import Testimonial from "./components/Testimonial";
 import About from "./components/About";
 
@@ -10,11 +9,11 @@ export default function Home() {
     <div className="bg-white">
       <SlideHero />
       <ProductCategories />
-      <ShowFiltredProducts productType={"NewArrival"} />
-      <ShowFiltredProducts productType={"TopProduct"} />
+      <ShowFilteredProducts productType={"NewArrival"} />
+      <ShowFilteredProducts productType={"TopProduct"} />
       <About />
       <Testimonial />
-      {/* <Footer/> */}
+  
     </div>
   );
 }

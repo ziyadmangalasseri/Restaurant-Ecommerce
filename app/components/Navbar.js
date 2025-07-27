@@ -41,11 +41,9 @@ export default function Navbar() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const cartItmes = useSelector((store) => store.cart.items);
+  const cartItems = useSelector((store) => store.cart.items);
 
-  useEffect(() => {
-    // console.log("Redux store itmes", cartItmes);
-  }, [cartItmes]);
+  useEffect(() => {}, [cartItems]);
 
   // const {message} = router.query;
 
@@ -256,9 +254,9 @@ export default function Navbar() {
                 className="flex flex-col items-center text-gray-700 hover:text-blue-600 relative"
               >
                 <ShoppingCart size={22} />
-                {cartItmes.length > 0 && (
+                {cartItems.length > 0 && (
                   <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                    {cartItmes.length}
+                    {cartItems.length}
                   </span>
                 )}
                 <span className="text-xs mt-1">Cart</span>
@@ -292,14 +290,18 @@ export default function Navbar() {
                 </button>
               )}
 
-              <button className="relative" aria-label="Shopping Cart">
+              <Link
+                href="/cart"
+                className="relative"
+                aria-label="Shopping Cart"
+              >
                 <ShoppingCart size={24} />
-                {cartCount > 0 && (
+                {cartItems.length > 0 && (
                   <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                    {cartCount}
+                    {cartItems.length}
                   </span>
                 )}
-              </button>
+              </Link>
 
               <button
                 onClick={handleClick}
