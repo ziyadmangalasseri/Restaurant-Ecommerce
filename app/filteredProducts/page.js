@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import ShowFiltredProducts from "../components/ShowFiltredProducts";
+import ShowFiltredProducts from "../components/ShowFilteredProducts";
 
 export default function FilteredProductsPage(){
     const searchParams = useSearchParams();
