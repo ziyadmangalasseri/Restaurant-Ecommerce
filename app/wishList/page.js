@@ -1,6 +1,6 @@
-import dynamic from "next/dynamic";
-const Wishlist = dynamic(() => import("@/components/Wishlist"), { ssr: false });
+// import dynamic from "next/dynamic";
+// import Wishlist from "../components/WishList";
 
-export default function WishlistPage() {
-  return <Wishlist />;
-}
+// export default function WishlistPage() {
+//   return <Wishlist />;
+// }
