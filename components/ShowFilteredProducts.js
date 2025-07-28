@@ -1,11 +1,8 @@
 "use client";
 import Link from "next/link";
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
-import ProductCard from "./ui/ProductCard"; 
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import ProductCard from "./ui/ProductCard";
 import ProductCardSkeleton from "./ui/ProductCardSkeleton";
 
 const ShowFiltredProducts = ({
@@ -16,26 +13,26 @@ const ShowFiltredProducts = ({
   limit = 10,
   showViewAll = true,
   viewAllLink = "/products",
-  layoutType = "slider", // "slider" or "grid"
+  layoutType 
 }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const containerRef = useRef(null);
   const [isScrollable, setIsScrollable] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
   const [responseNotOkey, setResponseNotOkey] = useState(false);
+  const [isHovered, setIsHovered] = useState(false); // Track hover state
+
+  const containerRef = useRef(null);
+  const autoSlideIntervalRef = useRef(null);
 
   // Build query parameters dynamically
   const buildQueryParams = useCallback(() => {
     const params = new URLSearchParams();
-
     if (productType) params.append(productType, "true");
     if (category) params.append("categories", category);
     params.append("limit", limit.toString());
-
     return params.toString();
   }, [productType, category, limit]);
 
@@ -45,14 +42,11 @@ const ShowFiltredProducts = ({
       setLoading(true);
       const queryParams = buildQueryParams();
       const res = await fetch(`/api/products?${queryParams}`);
-
       console.log(`/api/products?${queryParams}`);
-
       if (!res.ok) {
         setResponseNotOkey(true);
         return;
       }
-
       const data = await res.json();
       setProducts(data.products || []);
     } catch (error) {
@@ -67,7 +61,7 @@ const ShowFiltredProducts = ({
     fetchProducts();
   }, [fetchProducts]);
 
-  // Handle scrollable logic for slider layout
+  // Handle scrollable logic and auto-slide for slider layout
   useEffect(() => {
     if (layoutType !== "slider") return;
 
@@ -81,8 +75,40 @@ const ShowFiltredProducts = ({
 
     checkScrollable();
     window.addEventListener("resize", checkScrollable);
-    return () => window.removeEventListener("resize", checkScrollable);
-  }, [products, loading, layoutType]);
+
+    // Auto-slide for NewArrival
+    if (productType === "NewArrival" && layoutType === "slider") {
+      const startAutoSlide = () => {
+        autoSlideIntervalRef.current = setInterval(() => {
+          if (!isHovered && containerRef.current) {
+            const container = containerRef.current;
+            const scrollAmount = container.clientWidth * 0.8;
+            let newScrollPosition = container.scrollLeft + scrollAmount;
+
+            // Reset to start when reaching the end
+            if (newScrollPosition >= maxScroll) {
+              newScrollPosition = 0;
+            }
+
+            container.scrollTo({
+              left: newScrollPosition,
+              behavior: "smooth",
+            });
+            setScrollPosition(newScrollPosition);
+          }
+        }, 3000); // Slide every 3 seconds
+      };
+
+      startAutoSlide();
+    }
+
+    return () => {
+      window.removeEventListener("resize", checkScrollable);
+      if (autoSlideIntervalRef.current) {
+        clearInterval(autoSlideIntervalRef.current);
+      }
+    };
+  }, [products, loading, layoutType, productType, isHovered, maxScroll]);
 
   const handleScroll = (direction) => {
     const container = containerRef.current;
@@ -108,10 +134,18 @@ const ShowFiltredProducts = ({
     }
   };
 
+  // Handle mouse hover to pause/resume auto-slide
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   // Generate title based on props
   const getTitle = () => {
     if (title) return title;
-
     if (category) {
       return (
         <h2 className="text-center">
@@ -125,7 +159,6 @@ const ShowFiltredProducts = ({
         </h2>
       );
     }
-
     if (productType === "TopProduct") {
       return (
         <h2 className="text-center">
@@ -139,7 +172,6 @@ const ShowFiltredProducts = ({
         </h2>
       );
     }
-
     if (productType === "NewArrival") {
       return (
         <h2 className="text-center">
@@ -153,18 +185,15 @@ const ShowFiltredProducts = ({
         </h2>
       );
     }
-
     return <h2></h2>;
   };
 
   const getSubtitle = () => {
     if (subtitle) return subtitle;
-
     if (category) {
       return `Explore our premium ${category} collection crafted for excellence.`;
     }
-
-    return "Discover our handpicked selection of premium Perfume that define your attractiveness.";
+    return "The Elite List: Top Choices!";
   };
 
   // Generate section ID based on props
@@ -197,7 +226,6 @@ const ShowFiltredProducts = ({
         </>
       );
     }
-
     if (error) {
       return (
         <div className="w-full text-center py-8 text-red-500">
@@ -205,7 +233,6 @@ const ShowFiltredProducts = ({
         </div>
       );
     }
-
     if (responseNotOkey) {
       return (
         <div className="flex justify-center items-center py-8">
@@ -213,7 +240,6 @@ const ShowFiltredProducts = ({
         </div>
       );
     }
-
     if (products.length === 0) {
       return (
         <div className="flex justify-center items-center py-8">
@@ -221,7 +247,6 @@ const ShowFiltredProducts = ({
         </div>
       );
     }
-
     return products.map((product, idx) => (
       <div
         key={product.id || idx}
@@ -250,7 +275,11 @@ const ShowFiltredProducts = ({
         </div>
 
         {/* Products Container */}
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-0">
+        <div
+          className="relative max-w-[1400px] mx-auto px-4 sm:px-0"
+          onMouseEnter={layoutType === "slider" && productType === "NewArrival" ? handleMouseEnter : undefined}
+          onMouseLeave={layoutType === "slider" && productType === "NewArrival" ? handleMouseLeave : undefined}
+        >
           {/* Navigation Buttons for Slider Layout */}
           {layoutType === "slider" && isScrollable && scrollPosition > 0 && (
             <button
@@ -269,24 +298,22 @@ const ShowFiltredProducts = ({
             className={
               layoutType === "slider"
                 ? "flex overflow-x-auto gap-3 md:gap-4 pb-4 relative [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] snap-x snap-mandatory"
-                : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6"
+                : "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
             }
           >
             {renderProducts()}
           </div>
 
           {/* Right Navigation Button for Slider Layout */}
-          {layoutType === "slider" &&
-            isScrollable &&
-            scrollPosition < maxScroll && (
-              <button
-                onClick={() => handleScroll("right")}
-                className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-50 bg-white hover:bg-gray-100 text-[#1a2649] p-2 sm:p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center"
-                aria-label="Scroll right"
-              >
-                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-              </button>
-            )}
+          {layoutType === "slider" && isScrollable && scrollPosition < maxScroll && (
+            <button
+              onClick={() => handleScroll("right")}
+              className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-50 bg-white hover:bg-gray-100 text-[#1a2649] p-2 sm:p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          )}
         </div>
 
         {/* View All Button */}
