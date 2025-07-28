@@ -10,7 +10,7 @@ const heroProducts = [
   {
     id: 1,
     title: "Elevate Every Bite",
-     tagline: "An experience where taste meets tradition. Dine in style or order from the comfort of home.",
+     tagline: "An experience where taste meets tradition. Dine in style or order from the comfort of home",
     // description:
     //   "Discover our handcrafted luxury items designed for the discerning customer",
     // badge: "New Season",
@@ -22,7 +22,7 @@ const heroProducts = [
   {
     id: 2,
      title: "Taste the Flavor. Love the Experience.",
-     tagline:"Freshly made, expertly crafted — your next favorite meal is just a click away.",
+     tagline:"Freshly made, expertly crafted — your next favorite meal is just a click away",
     // description:
     //   "Premium products with limited availability, crafted for perfection",
     // badge: "Trending",
@@ -35,7 +35,7 @@ const heroProducts = [
   {
     id: 3,
      title: "Wholesome. Delicious. Hassle-Free.",
-     tagline: "Healthy meals made simple — just choose, click, and enjoy.",
+     tagline: "Healthy meals made simple — just choose, click, and enjoy",
     // description:
     //   "Timeless classics reimagined with modern techniques and materials",
     // badge: "Best Seller",
