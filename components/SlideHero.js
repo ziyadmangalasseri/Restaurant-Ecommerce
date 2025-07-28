@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import bannerImage1 from "@/public/image/user/heroBannerImage1.png";
-import bannerImage2 from "@/public/image/user/heroBannerImage2.png";
-import bannerImage3 from "@/public/image/user/heroBannerImage3.png";
+import bannerImage1 from "@/public/image/user/heroBannerImage4.jpg";
+import bannerImage2 from "@/public/image/user/heroBannerImage7.jpg";
+import bannerImage4 from "@/public/image/user/heroBannerImage4.jpg";
 
 const heroProducts = [
   {
@@ -43,7 +43,7 @@ const heroProducts = [
     // color: "bg-emerald-700",
     // accentColor: "bg-emerald-500",
     // textColor: "text-emerald-100",
-     backgroundImage: bannerImage3
+     backgroundImage: bannerImage4
   },
 ];
 
