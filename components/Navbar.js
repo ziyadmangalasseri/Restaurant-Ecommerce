@@ -116,7 +116,7 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* Icons */}
+        {/* Icons for Desktop */}
         <div className="hidden md:flex items-center space-x-4">
           <Link href="/cart" className="relative">
             <ShoppingCart className="text-gray-600 hover:text-blue-600" />
@@ -125,12 +125,18 @@ export default function Navbar() {
           {user ? <UserMenu user={user} onLogout={handleLogout} /> : <button onClick={() => setAuthModalOpen(true)}><LogIn className="text-gray-600 hover:text-blue-600" /></button>}
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <button onClick={() => setClick(!click)} className="md:hidden">
-          <span className="block w-6 h-0.5 bg-gray-600 mb-1"></span>
-          <span className="block w-6 h-0.5 bg-gray-600 mb-1"></span>
-          <span className="block w-6 h-0.5 bg-gray-600"></span>
-        </button>
+        {/* Mobile Navigation Icons and Toggle */}
+        <div className="flex md:hidden items-center space-x-4">
+          <Link href="/cart" className="relative">
+            <ShoppingCart className="text-gray-600 hover:text-blue-600" />
+            {cartItems.length > 0 && <span className="absolute -top-2 -right-2 text-xs bg-red-600 text-white w-5 h-5 rounded-full flex items-center justify-center">{cartItems.length}</span>}
+          </Link>
+          <button onClick={() => setClick(!click)} className="flex flex-col justify-center items-center">
+            <span className="block w-6 h-0.5 bg-gray-600 mb-1"></span>
+            <span className="block w-6 h-0.5 bg-gray-600 mb-1"></span>
+            <span className="block w-6 h-0.5 bg-gray-600"></span>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}

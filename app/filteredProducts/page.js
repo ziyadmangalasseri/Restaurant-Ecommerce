@@ -8,7 +8,7 @@ export default function FilteredProductsPage(){
     const category = searchParams.get("category");
 
     return(
-        <div className="bg-white mt-[100px]">
+        <div className="bg-white mt-14">
             <ShowFiltredProducts category={category}/>
         </div>
     )
