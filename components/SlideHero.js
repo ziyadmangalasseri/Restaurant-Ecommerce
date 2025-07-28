@@ -108,9 +108,9 @@ const PremiumHero = () => {
           </div>
 
              <div className="relative z-20 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl px-6 mx-auto py-20 md:py-0">
-              <div className="text-white space-y-6 w-full md:w-1/2">
+              <div className="space-y-40 md:space-y-6 w-full ">
                 <h1 className="text-4xl md:text-6xl font-bold">{product.title}</h1>
-              <p className="text-2xl opacity-90">{product.tagline}</p>
+              <p className=" text-2xl opacity-90">{product.tagline}</p>
                 <p className="text-lg md:text-xl opacity-80 max-w-md">{product.description}</p>
               </div>
             </div> 
