@@ -8,22 +8,21 @@ const Testimonial = () => {
 
   const testimonials = [
     {
-      quote: "Hey order just arrived wanted to say that the scrunchies were in good condition and the fabric is so good that even my sister couldn't believe that they are that affordable",
+      quote: "The food arrived hot and fresh, and the flavors were incredible! Even my family was amazed at how affordable the meal was.",
       author: "Shivani",
       location: "from Jammu and Kashmir"
     },
     {
-      quote: "The quality of the products exceeded my expectations. The customer service was exceptional and delivery was quick!",
+      quote: "The dishes exceeded my expectations. The service was outstanding, and the delivery was super fast!",
       author: "Rahul",
       location: "from Mumbai"
     },
     {
-      quote: "I've been a regular customer for months now. The consistency in quality and service is remarkable. Highly recommended!",
+      quote: "I've been ordering from this restaurant for months. The consistency in food quality and service is outstanding. Highly recommended!",
       author: "Priya",
       location: "from Bangalore"
     }
-  ];
-
+];
   // Auto-switch testimonials
   useEffect(() => {
     const timer = setInterval(() => {

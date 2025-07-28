@@ -85,7 +85,7 @@ const PremiumHero = () => {
       <div className="absolute inset-0 opacity-10 z-0 bg-grid-pattern"></div>
 
       {/* Slides */}
-      <div className="relative h-full w-full">
+      <div className="relative h-full w-full mt-14">
         {heroProducts.map((product, index) => (
           <div
             key={product.id}
