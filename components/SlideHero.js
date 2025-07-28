@@ -9,8 +9,8 @@ import bannerImage3 from "@/public/image/user/heroBannerImage3.png";
 const heroProducts = [
   {
     id: 1,
-    // title: "Premium Collection",
-    // tagline: "Elevate Your Style",
+    title: "Elevate Every Bite",
+     tagline: "An experience where taste meets tradition. Dine in style or order from the comfort of home.",
     // description:
     //   "Discover our handcrafted luxury items designed for the discerning customer",
     // badge: "New Season",
@@ -21,8 +21,8 @@ const heroProducts = [
   },
   {
     id: 2,
-    // title: "Limited Edition",
-    // tagline: "Exclusive Release",
+     title: "Taste the Flavor. Love the Experience.",
+     tagline:"Freshly made, expertly crafted — your next favorite meal is just a click away.",
     // description:
     //   "Premium products with limited availability, crafted for perfection",
     // badge: "Trending",
@@ -34,8 +34,8 @@ const heroProducts = [
   },
   {
     id: 3,
-    // title: "Signature Series",
-    // tagline: "Iconic Essentials",
+     title: "Wholesome. Delicious. Hassle-Free.",
+     tagline: "Healthy meals made simple — just choose, click, and enjoy.",
     // description:
     //   "Timeless classics reimagined with modern techniques and materials",
     // badge: "Best Seller",
@@ -106,18 +106,14 @@ const PremiumHero = () => {
             quality={85}
             />
           </div>
-            {/* <div className={`absolute inset-0 ${product.color} opacity-90`}></div> */}
-            {/* <div
-              className={`absolute top-0 left-1/2 h-full w-1/3 ${product.accentColor} opacity-20 transform -skew-x-12`}
-            ></div> */}
 
-            {/* <div className="relative z-20 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl px-6 mx-auto py-20 md:py-0">
+             <div className="relative z-20 flex flex-col md:flex-row items-center justify-between w-full max-w-7xl px-6 mx-auto py-20 md:py-0">
               <div className="text-white space-y-6 w-full md:w-1/2">
                 <h1 className="text-4xl md:text-6xl font-bold">{product.title}</h1>
-                <p className="text-2xl opacity-90">{product.tagline}</p>
+              <p className="text-2xl opacity-90">{product.tagline}</p>
                 <p className="text-lg md:text-xl opacity-80 max-w-md">{product.description}</p>
               </div>
-            </div> */}
+            </div> 
           </div>
         ))}
       </div>
