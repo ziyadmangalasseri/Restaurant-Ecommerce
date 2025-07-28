@@ -82,7 +82,7 @@ export default function Navbar() {
   return (
     <header className="fixed w-full top-0 z-50 bg-white shadow-md">
       <nav className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-blue-600">EASYCOM</Link>
+        <Link href="/" className="text-2xl font-bold text-blue-600">EASYEATS</Link>
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex space-x-6 text-sm font-medium">

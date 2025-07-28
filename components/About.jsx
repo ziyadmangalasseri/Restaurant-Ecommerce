@@ -1,45 +1,48 @@
 import Image from "next/image";
+import cheff from "@/public/image/user/cheff.png";
+
 const About = () => {
   return (
     <div id="about" className="bg-[#1a2649]">
       <div className="max-w-6xl mx-auto px-4 py-20">
         {/* Header */}
         <h2 className="text-4xl text-white mb-12">
-          About <span className="font-light">EASYCOM</span>
+          About <span className="font-light">EASYEATS</span>
         </h2>
 
         {/* Content Grid */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Image */}
           <div className="rounded-lg overflow-hidden">
             <Image
-              src="/jewelry-image.jpg" // Replace with your actual image path
-              alt="ABOUTUS img"
-              className="w-full h-auto rounded-lg"
-              fill
-              style={{ objectFit: 'cover' }}
+              src={cheff}
+              alt="Chef preparing food for EasyEats"
+              className="w-full h-auto object-cover rounded-lg"
+              width={600}
+              height={400}
+              layout="responsive"
             />
           </div>
 
           {/* Text Content */}
           <div className="text-white space-y-6">
             <p className="text-lg">
-              EasyCom is an online store designed to make shopping simple and
-              convenient for everyone. At EasyCom, customers can explore a wide
-              range of products—from stylish clothes and accessories to everyday
-              essentials—all from the comfort of their homes. With a
-              user-friendly website and secure payment options, EasyCom ensures
-              a smooth shopping experience. Fast delivery, reliable customer
-              support, and quality products are what make EasyCom a trusted
-              choice for online shoppers. Whether you’re looking for something
-              trendy or something useful, EasyCom has it all in one place.{" "}
+              EasyEats is an online food ordering platform designed to make dining simple and
+              convenient for everyone. At EasyEats, customers can explore a wide
+              range of cuisines—from delicious appetizers and main courses to sweet
+              desserts—all from the comfort of their homes. With a
+              user-friendly website and secure payment options, EasyEats ensures
+              a smooth ordering experience. Fast delivery, reliable customer
+              support, and high-quality meals are what make EasyEats a trusted
+              choice for food lovers. Whether you’re craving something
+              savory or something sweet, EasyEats has it all in one place.
             </p>
 
             <p className="text-lg">
-              EasyCom is your go-to online store for stylish and affordable
-              products. We offer a smooth shopping experience with fast delivery
-              and secure payments. From fashion to daily essentials, everything
-              is just a click away. Shop smart, shop easy — only at EasyCom!
+              EasyEats is your go-to online platform for delicious and affordable
+              meals. We offer a smooth ordering experience with fast delivery
+              and secure payments. From gourmet dishes to everyday comfort food, everything
+              is just a click away. Eat smart, eat easy — only at EasyEats!
             </p>
 
             <button className="mt-6 px-6 py-2 border border-white text-white hover:bg-white hover:text-[#1a2649] transition-colors duration-300 inline-flex items-center group">
@@ -67,7 +70,7 @@ const About = () => {
         <div className="max-w-6xl mx-auto px-4 py-12">
           <div className="grid grid-cols-3 gap-8">
             <div className="text-center text-[#1a2649]">
-              <h3 className="text-xl font-semibold mb-2">All India Delivery</h3>
+              <h3 className="text-xl font-semibold mb-2">Fast Delivery</h3>
             </div>
             <div className="text-center text-[#1a2649]">
               <h3 className="text-xl font-semibold mb-2">Affordable Price</h3>

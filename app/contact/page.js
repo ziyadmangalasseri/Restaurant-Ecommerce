@@ -50,7 +50,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 mt-10">
+    <div className="min-h-screen bg-gray-50 py-12 mt-14">
       <div className="max-w-6xl mx-auto px-4">
         
         {/* Header */}
@@ -105,8 +105,8 @@ const ContactPage = () => {
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                   <p className="text-gray-600">
-                    hello@easycom.restaurant<br />
-                    orders@easycom.restaurant
+                    hello@easyeats.restaurant<br />
+                    orders@easyeats.restaurant
                   </p>
                 </div>
               </div>
