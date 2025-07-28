@@ -1,6 +1,6 @@
 'use client';
-import { Checkbox } from '../../../../app/components/ui/Checkbox';
-import { Badge } from '../../../../app/components/ui/Badge';
+import { Checkbox } from '../../ui/Checkbox';
+import { Badge } from '../../ui/Badge';
 import { formatCurrency } from '@/lib/utils';
 
 export default function ProductTable({

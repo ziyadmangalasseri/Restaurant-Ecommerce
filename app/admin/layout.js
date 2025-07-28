@@ -2,10 +2,10 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import AdminSidebar from "../../app/components/admin/Sidebar";
-import AdminHeader from "../../app/components/admin/Header";
+import AdminSidebar from "../../components/admin/Sidebar";
+import AdminHeader from "../../components/admin/Header";
 import { AdminProvider } from "../../context/AdminContext.jsx";
-import { AuthModal } from "../components/AuthModal";
+import { AuthModal } from "../../components/AuthModal";
 
 export default function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);

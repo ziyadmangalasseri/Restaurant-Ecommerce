@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setCart } from "../store/cartSlice";
 import { useSession } from "next-auth/react";
-import Cart from "../components/Cart";
+import Cart from "../../components/Cart";
 
 export default function CartPage() {
   const dispatch = useDispatch();

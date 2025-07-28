@@ -6,7 +6,7 @@ import {
   updateQuantity,
   increaseQuantity,
   decreaseQuantity,
-} from "../store/cartSlice";
+} from "../app/store/cartSlice";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Image from "next/image";
