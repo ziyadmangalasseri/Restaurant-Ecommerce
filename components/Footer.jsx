@@ -35,7 +35,7 @@ export default function Footer() {
 
       {/* Copyright */}
       <div className="text-center mt-8 text-sm text-gray-600">
-        ©2025 by EASYCOM. Powered and secured by SDEC Digital
+        ©2025 by EASYEATS. Powered and secured by SDEC Digital
       </div>
     </div>
   );
