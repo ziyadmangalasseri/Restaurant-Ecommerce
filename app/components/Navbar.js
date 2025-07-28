@@ -15,7 +15,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { AuthModal, UserMenu } from "./AuthModal"; // Import the auth components
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
-import LoginLayout from "./loginLayout";
+// import LoginLayout from "./loginLayout";
 import { useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 
