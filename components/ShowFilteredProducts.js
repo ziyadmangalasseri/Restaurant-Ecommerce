@@ -284,7 +284,7 @@ const ShowFiltredProducts = ({
           {layoutType === "slider" && isScrollable && scrollPosition > 0 && (
             <button
               onClick={() => handleScroll("left")}
-              className="absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-50 bg-white hover:bg-gray-100 text-[#1a2649] p-2 sm:p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center"
+              className="absolute -left-2 sm:-left-6 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-100 text-[#1a2649] p-2 sm:p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center"
               aria-label="Scroll left"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -308,7 +308,7 @@ const ShowFiltredProducts = ({
           {layoutType === "slider" && isScrollable && scrollPosition < maxScroll && (
             <button
               onClick={() => handleScroll("right")}
-              className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-50 bg-white hover:bg-gray-100 text-[#1a2649] p-2 sm:p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center"
+              className="absolute -right-2 sm:-right-6 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-100 text-[#1a2649] p-2 sm:p-3 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center"
               aria-label="Scroll right"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />

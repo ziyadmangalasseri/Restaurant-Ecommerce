@@ -82,7 +82,7 @@ export default function Navbar() {
   return (
     <header className="fixed w-full top-0 z-50 bg-white shadow-md">
       <nav className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-blue-600">EASYEATS</Link>
+        <Link href="/" className="text-2xl font-bold text-[#1a2649]">EASYEATS</Link>
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex space-x-6 text-sm font-medium">
@@ -98,7 +98,7 @@ export default function Navbar() {
                       scrollToSection(item.id);
                       handleLinkClick(item.id);
                     }}
-                    className={`hover:text-blue-600 transition-colors ${isActive ? 'text-blue-600' : 'text-gray-700'}`}
+                    className={`hover:text-[#1a2649] transition-colors ${isActive ? 'text-[#1a2649]' : 'text-gray-700'}`}
                   >
                     {item.name}
                   </a>
@@ -106,7 +106,7 @@ export default function Navbar() {
                   <Link
                     href={item.path}
                     onClick={() => handleLinkClick(item.id)}
-                    className={`hover:text-blue-600 transition-colors ${isActive ? 'text-blue-600' : 'text-gray-700'}`}
+                    className={`hover:text-[#1a2649] transition-colors ${isActive ? 'text-[#1a2649]' : 'text-gray-700'}`}
                   >
                     {item.name}
                   </Link>
@@ -119,16 +119,16 @@ export default function Navbar() {
         {/* Icons for Desktop */}
         <div className="hidden md:flex items-center space-x-4">
           <Link href="/cart" className="relative">
-            <ShoppingCart className="text-gray-600 hover:text-blue-600" />
+            <ShoppingCart className="text-gray-600 hover:text-[#1a2649]" />
             {cartItems.length > 0 && <span className="absolute -top-2 -right-2 text-xs bg-red-600 text-white w-5 h-5 rounded-full flex items-center justify-center">{cartItems.length}</span>}
           </Link>
-          {user ? <UserMenu user={user} onLogout={handleLogout} /> : <button onClick={() => setAuthModalOpen(true)}><LogIn className="text-gray-600 hover:text-blue-600" /></button>}
+          {user ? <UserMenu user={user} onLogout={handleLogout} /> : <button onClick={() => setAuthModalOpen(true)}><LogIn className="text-gray-600 hover:text-[#1a2649]" /></button>}
         </div>
 
         {/* Mobile Navigation Icons and Toggle */}
         <div className="flex md:hidden items-center space-x-4">
           <Link href="/cart" className="relative">
-            <ShoppingCart className="text-gray-600 hover:text-blue-600" />
+            <ShoppingCart className="text-gray-600 hover:text-[#1a2649]" />
             {cartItems.length > 0 && <span className="absolute -top-2 -right-2 text-xs bg-red-600 text-white w-5 h-5 rounded-full flex items-center justify-center">{cartItems.length}</span>}
           </Link>
           <button onClick={() => setClick(!click)} className="flex flex-col justify-center items-center">
@@ -156,7 +156,7 @@ export default function Navbar() {
                         handleLinkClick(item.id);
                         setClick(false);
                       }}
-                      className={`block px-4 py-2 rounded ${isActive ? 'bg-blue-100 text-blue-600' : 'text-gray-800'}`}
+                      className={`block px-4 py-2 rounded ${isActive ? 'bg-blue-100 text-[#1a2649]' : 'text-gray-800'}`}
                     >
                       {item.name}
                     </a>
@@ -164,7 +164,7 @@ export default function Navbar() {
                     <Link
                       href={item.path}
                       onClick={() => setClick(false)}
-                      className={`block px-4 py-2 rounded ${isActive ? 'bg-blue-100 text-blue-600' : 'text-gray-800'}`}
+                      className={`block px-4 py-2 rounded ${isActive ? 'bg-blue-100 text-[#1a2649]' : 'text-gray-800'}`}
                     >
                       {item.name}
                     </Link>
@@ -178,7 +178,7 @@ export default function Navbar() {
             {user ? (
               <button onClick={handleLogout} className="w-full text-left text-red-600 hover:bg-red-50 px-4 py-2 rounded">Sign Out</button>
             ) : (
-              <button onClick={() => { setAuthModalOpen(true); setClick(false); }} className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Sign In / Register</button>
+              <button onClick={() => { setAuthModalOpen(true); setClick(false); }} className="w-full bg-[black] text-white px-4 py-2 rounded hover:bg-[#1a2649]">Sign In / Register</button>
             )}
           </div>
         </div>
