@@ -167,6 +167,14 @@ const ShowFiltredProducts = ({
     return "Discover our handpicked selection of premium Perfume that define your attractiveness.";
   };
 
+  // Generate section ID based on props
+  const getSectionId = () => {
+    if (productType === "TopProduct") return "top-products";
+    if (productType === "NewArrival") return "new-arrivals";
+    if (category) return `${category.toLowerCase()}-collection`;
+    return "products-section";
+  };
+
   // Render products based on layout type
   const renderProducts = () => {
     if (loading) {
@@ -231,7 +239,7 @@ const ShowFiltredProducts = ({
   };
 
   return (
-    <section className="bg-white py-8 sm:py-12 lg:py-16">
+    <section id={getSectionId()} className="bg-white py-8 sm:py-12 lg:py-16">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-12">

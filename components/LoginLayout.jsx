@@ -1,6 +1,6 @@
 "use client";
 import { useState } from 'react';
-import { AuthModal } from '../components/AuthModal';
+import { AuthModal } from './AuthModal';
 import { useRouter } from 'next/navigation';
 
 export default function LoginLayout() {
