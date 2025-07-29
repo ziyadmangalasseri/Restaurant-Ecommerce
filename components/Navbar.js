@@ -25,8 +25,8 @@ export default function Navbar() {
 
   const PRODUCTS_DROPDOWN =[
     { name: "All Products", path: "/products" },
-    { name: "New Arrivals", path: "/#new-arrivals" , type: "scroll", id: "new-arrivals"},
-    { name: "Top Picks", path: "/#top-products", type: "scroll", id: "top-products" },
+    { name: "New Arrivals", path: "/#new-arrivals" , type: isHomePage ? "scroll" : "link", id: "new-arrivals"},
+    { name: "Top Picks", path: "/#top-products", type: isHomePage ? "scroll" : "link", id: "top-products" },
   ]
 
   const NAV_LINKS = [
