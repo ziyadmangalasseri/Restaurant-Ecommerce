@@ -203,8 +203,8 @@ export default function Navbar() {
     const isActive = item.type === "scroll" ? activeLink === item.id : pathname === item.path;
     
     // For mobile, show individual links instead of dropdown
-    if (item.type === "dropdown" && item.dropdown) {
-      return item.dropdown.map((dropdownItem) => {
+    if (item.type === "dropdown" && item.dropdownItems) {
+      return item.dropdownItems.map((dropdownItem) => {
         if (dropdownItem.type === "scroll") {
           const isDropdownActive = activeLink === dropdownItem.id;
           return (
