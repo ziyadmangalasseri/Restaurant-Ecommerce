@@ -12,6 +12,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { Minus, Plus, Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { AuthModal } from "./AuthModal";
+import { useRouter } from "next/navigation";
 
 const CartItem = ({ item, onRemove, onUpdateQuantity, loadingId }) => {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -127,6 +129,18 @@ const CartSummary = ({ items }) => {
   const tax = subtotal * 0.1; // 10% tax
   const shipping = subtotal > 50 ? 0 : 5.99; // Free shipping over $50
   const total = subtotal + tax + shipping;
+  const { data: session } = useSession();
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const router = useRouter()
+
+  const handleCheckout = () => {
+    if (!session?.user) {
+      setAuthModalOpen(true);
+      return;
+    }
+
+    router.push("/checkout");
+  };
 
   return (
     <div className="bg-white rounded-xl p-6 border border-gray-200 sticky top-4">
@@ -166,9 +180,16 @@ const CartSummary = ({ items }) => {
         )}
       </div>
 
-      <button className="w-full mt-6 bg-[#1a2649] text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-900 transition-colors">
+      <button
+        onClick={handleCheckout}
+        className="w-full mt-6 bg-[#1a2649] text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-900 transition-colors"
+      >
         Proceed to Checkout
       </button>
+      <AuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+      />
     </div>
   );
 };
