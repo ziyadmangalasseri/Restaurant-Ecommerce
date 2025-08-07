@@ -67,7 +67,7 @@ const ProductCategories = () => {
   // Update showLoadMore based on categories and displayLimit
   useEffect(() => {
     setShowLoadMore(categories.length > displayLimit);
-  }, [categories.length, displayLimit]);
+  }, [categories, displayLimit]);
 
   // Load more handler
   const handleLoadMore = () => {
@@ -152,7 +152,7 @@ const ProductCategories = () => {
                 {categoriesToDisplay.map((category, index) => (
                   <Link
                     key={index}
-                    href={`/filteredProducts?category=${encodeURIComponent(category.name)}`}
+                    href={`/filteredCategoryProducts?category=${encodeURIComponent(category.name)}`}
                     className="px-2 cursor-pointer group"
                   >
                     <div className="relative mb-2">

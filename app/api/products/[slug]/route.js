@@ -1,4 +1,5 @@
 import dbConnect from "@/lib/mongodb";
+import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 import productModel from "@/lib/models/Product";
 import { v2 as cloudinary } from "cloudinary";
@@ -18,9 +19,11 @@ export async function GET(request, { params }) {
   try {
     await dbConnect();
 
-    const product = await productModel.findOne({
-      $or: [{ _id: params.product_slug }, { slug: params.product_slug }],
-    });
+    const query = mongoose.Types.ObjectId.isValid(params.slug)
+      ? { $or: [{ _id: params.slug }, { slug: params.slug }] }
+      : { slug: params.slug };
+
+    const product = await productModel.findOne(query);
 
     if (!product) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
@@ -48,8 +51,16 @@ export async function PUT(request, { params }) {
     console.log("Product update process started");
     await dbConnect();
 
+    const query = mongoose.Types.ObjectId.isValid(params.slug)
+  ? { $or: [{ _id: params.slug }, { slug: params.slug }] }
+  : { slug: params.slug };
+
+const product = await productModel.findOne(query);
+
+
     const formData = await request.formData();
     const name = formData.get("name");
+    const slug = name.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
     const description = formData.get("description");
     const price = parseFloat(formData.get("price"));
     const stock = parseInt(formData.get("stock"));
@@ -62,7 +73,7 @@ export async function PUT(request, { params }) {
     const newImage = formData.get("images");
     const imagesToRemove = formData.get("imagesToRemove") === "true";
 
-    const productSlug = params.product_slug;
+    const productSlug = params.slug;
     const existingProduct = await productModel.findOne({
       $or: [{ _id: productSlug }, { slug: productSlug }],
     });
@@ -155,6 +166,7 @@ export async function PUT(request, { params }) {
         existingProduct._id,
         {
           name,
+          slug,
           description,
           price,
           stock,
@@ -193,9 +205,12 @@ export async function DELETE(request, { params }) {
     // console.log("product delelte process started")
     await dbConnect();
 
-    const product = await productModel.findOne({
-      $or: [{ _id: params.product_slug }, { slug: params.product_slug }],
-    });
+    const query = mongoose.Types.ObjectId.isValid(params.slug)
+  ? { $or: [{ _id: params.slug }, { slug: params.slug }] }
+  : { slug: params.slug };
+
+const product = await productModel.findOne(query);
+
 
     if (!product) {
       return NextResponse.json({ error: "Product not found" }, { status: 404 });
