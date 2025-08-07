@@ -11,6 +11,7 @@ export default function EditProduct({ params }) {
   const [loading, setLoading] = useState(true)
   const [formData, setFormData] = useState({
     name: '',
+    slug: '',
     price: '',
     discountPrice: '',
     category: '',

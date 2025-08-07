@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {ShoppingBag, Star, Heart} from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../app/store/cartSlice";
@@ -42,6 +43,7 @@ const ProductCard = ({ product }) => {
     return (
         <div className="bg-white rounded-xl p-3 sm:p-4 border hover:shadow-lg transition-shadow duration-300">
             <div className="relative overflow-hidden rounded-lg bg-gray-50 mb-3 sm:mb-4 aspect-square">
+                <Link key={product._id} href={`/products/${product.slug}`} className="block w-full h-full">
                 <Image
                     src={
                         product.image ||
@@ -62,6 +64,7 @@ const ProductCard = ({ product }) => {
                         NEW
                     </span>
                 )}
+                </Link>
             </div>
 
             <div className="space-y-2">

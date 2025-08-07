@@ -14,6 +14,7 @@ export default function AddProduct() {
   const [showSavingPopup, setShowSavingPopup] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
+    slug: "",
     description: "",
     brand: "",
     price: 0,
@@ -81,6 +82,7 @@ export default function AddProduct() {
     try {
       const form = new FormData();
       form.append("name", formData.name);
+      form.append("slug", formData.slug || formData.name.trim().toLowerCase().replace(/\s+/g, "-"));
       form.append("description", formData.description);
       form.append("brand", formData.brand);
       form.append("price", formData.price);
@@ -183,6 +185,23 @@ export default function AddProduct() {
                     placeholder="Enter product name"
                     required
                     value={formData.name}
+                    onChange={handleChange}
+                    className="bg-gray-50 text-gray-900 shadow-sm focus:ring-indigo-600 focus:border-indigo-600 block w-full sm:text-sm border border-gray-300 rounded-lg px-3 py-2"
+                  />
+                </div>
+
+                  {/* slug */}
+                <div className="sm:col-span-4">
+                  <label className="block text-sm font-semibold text-gray-800">
+                    Slug <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="slug"
+                    id="slug"
+                    placeholder="Enter slug name"
+                    required
+                    value={formData.slug}
                     onChange={handleChange}
                     className="bg-gray-50 text-gray-900 shadow-sm focus:ring-indigo-600 focus:border-indigo-600 block w-full sm:text-sm border border-gray-300 rounded-lg px-3 py-2"
                   />
