@@ -3,7 +3,7 @@
 
 import { SessionProvider } from "next-auth/react";
 import { Provider as ReduxProvider } from "react-redux";
-import { store, persistor } from "./store/store";
+import { store, persistor } from "../lib/store/store";
 import { PersistGate } from "redux-persist/integration/react";
 
 export function Providers({ children }) {

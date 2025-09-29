@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import {ShoppingBag, Star, Heart} from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../app/store/cartSlice";
-import { toggleWishlist } from "../../app/store/wishlistSlice";
+import { addToCart } from "../../lib/store/cartSlice";
+import { toggleWishlist } from "../../lib/store/wishlistSlice";
 import { useSession } from "next-auth/react";
 
 const ProductCard = ({ product }) => {
