@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCart } from "../store/cartSlice";
+import { setCart } from "../../lib/store/cartSlice";
 import { useSession } from "next-auth/react";
 import Cart from "../../components/Cart";
 
